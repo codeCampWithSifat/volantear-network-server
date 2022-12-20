@@ -85,6 +85,13 @@ async function run() {
       }
     });
 
+    app.delete('/volantear/:id', async(req,res) => {
+        const id = req.params.id ;
+        const query = {_id : ObjectId(id)};
+        const result = await addVolantear.deleteOne(query);
+        res.send(result);
+    })
+
     // CREATE AUTH TOKEN
     app.post("/token", async (req, res) => {
       const user = req.body;
